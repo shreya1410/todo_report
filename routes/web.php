@@ -16,4 +16,13 @@ use App\Http\Controllers\TodoController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('my-todo',[TodoController::class,'getAllTodos']);
+
+Route::get('my-todo',[TodoController::class,'getAllTodos'])->name('home');
+
+Route::post('/save-todo',[TodoController::class,'store'])->name('todo.store');
+
+Route::post('/delete-todo',[TodoController::class,'destroy'])->name('todo.destroy');
+
+Route::put('/update-todo',[TodoController::class,'update'])->name('todo.update');
+
+Route::get('/edit-todo/{id}',[TodoController::class,'edit'])->name('todo.edit');
